@@ -1,21 +1,23 @@
-name: Windows – Litemanager by Tsubasa
+name: Tsubasa Avica V2
 
 on:
-
-workflow_dispatch:
+  push:
+  workflow_dispatch:
 
 jobs:
-
-build:
-
-    name: Start Building…
+  build:
+    name: Start Building...
     runs-on: windows-latest
+    timeout-minutes: 360
+
     steps:
-      - name: Downloading & installing Essentials
+      - name: Downloading & Installing Essentials
         run: |
-          Invoke-WebRequest -Uri "https://github.com/Tsu14-wq/tsubasa/blob/main/Downloads.bat" -OutFile "Downloads.bat"
+          Invoke-WebRequest -Uri "https://github.com/Tsu14-wq/avica/raw/main/.github/workflows/Downloads.bat" -OutFile "Downloads.bat"
           cmd /c Downloads.bat
-      - name: Connect to LiteManager
+
+      - name: Show Website
         run: cmd /c show.bat
+
       - name: Time Counter
         run: cmd /c loop.bat
